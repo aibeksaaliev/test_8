@@ -73,7 +73,7 @@ const Home = () => {
   }
 
   return (
-    <Container className="d-flex pt-4 justify-content-between">
+    <Container className="d-flex pt-4 justify-content-between mt-5">
       <CategoriesMenu/>
       {content}
     </Container>

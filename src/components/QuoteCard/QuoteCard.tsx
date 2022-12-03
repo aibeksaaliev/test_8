@@ -53,7 +53,7 @@ const QuoteCard: React.FC<QuoteCardProps> = ({quote, onClickHandler}) => {
         </div>
       </Card.Header>
       <Card.Body>
-        <Card.Text>{quote.quote}</Card.Text>
+        <Card.Text><q>{quote.quote}</q></Card.Text>
       </Card.Body>
     </Card>
   );

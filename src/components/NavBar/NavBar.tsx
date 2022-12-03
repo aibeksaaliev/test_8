@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 const NavBar = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" fixed="top">
         <Container className="d-flex justify-content-between">
           <Navbar.Brand><NavLink className="text-white text-decoration-none" to="/">Quotes Central</NavLink></Navbar.Brand>
           <Nav>
