@@ -6,6 +6,7 @@ import QuoteCard from "../../components/QuoteCard/QuoteCard";
 import LoadSpinner from "../../components/LoadSpinner/LoadSpinner";
 import CategoriesMenu from "../../components/CategoriesMenu/CategoriesMenu";
 import {useLocation, useParams} from "react-router-dom";
+import WelcomePage from "../../components/WelcomePage/WelcomePage";
 
 const Home = () => {
   const {category} = useParams();
@@ -36,7 +37,7 @@ const Home = () => {
     } finally {
       setHomeLoading(false);
     }
-  }, [location]);
+  }, [location, category]);
 
   const deleteQuote = async (id: string) => {
     setHomeLoading(true);
@@ -68,12 +69,7 @@ const Home = () => {
   }
 
   if (location.pathname === "/") {
-    content = (
-      <div className="w-75 text-center pt-5">
-        <h2>Welcome, dear quest!</h2>
-        <span>Please, choose category.</span>
-      </div>
-    )
+    content = <WelcomePage/>
   }
 
   return (

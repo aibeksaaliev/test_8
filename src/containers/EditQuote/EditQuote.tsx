@@ -7,7 +7,8 @@ const EditQuote = () => {
   const {id} = useParams();
 
   return (
-    <Container>
+    <Container className="text-center pt-3">
+      <h5 className="mb-3">Edit Quote</h5>
       <QuoteForm id={id}/>
     </Container>
   );

@@ -50,24 +50,28 @@ const QuoteForm: React.FC<QuoteFormProps> = ({id}) => {
 
   const onFormDataSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormLoading(true);
-    try {
-      if (id) {
-        await axiosApi.put("/quotes/" + id + ".json", quoteDetails);
-      } else {
-        await axiosApi.post("/quotes.json", quoteDetails);
-      }
-    } catch (e) {
-      throw new Error();
-    } finally {
-      setFormLoading(false);
-      setQuoteDetails({
-        category: "",
-        author: "",
-        quote: "",
-        id: ""
-      });
-    }
+   if (quoteDetails.category.length > 0){
+     setFormLoading(true);
+     try {
+       if (id) {
+         await axiosApi.put("/quotes/" + id + ".json", quoteDetails);
+       } else {
+         await axiosApi.post("/quotes.json", quoteDetails);
+       }
+     } catch (e) {
+       throw new Error();
+     } finally {
+       setFormLoading(false);
+       setQuoteDetails({
+         category: "",
+         author: "",
+         quote: "",
+         id: ""
+       });
+     }
+   } else {
+     alert('You have not chosen a category.');
+   }
   };
 
   let content = (
@@ -78,6 +82,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({id}) => {
         value={quoteDetails.category}
         onChange={onFormDataChange}
       >
+        <option hidden>Open this selected menu</option>
         <option value="star-wars">Star wars</option>
         <option value="famous-people">Famous people</option>
         <option value="saying">Saying</option>
@@ -105,7 +110,14 @@ const QuoteForm: React.FC<QuoteFormProps> = ({id}) => {
           rows={5}
           onChange={onFormDataChange}/>
       </Form.Group>
-      <Button type="submit">Save</Button>
+      <Button
+        type="submit"
+        variant="dark"
+        className="rounded-circle fs-2"
+        style={{padding: "13px 20px"}}
+      >
+        <i className="bi bi-cloud-download"></i>
+      </Button>
     </Form>
   );
 

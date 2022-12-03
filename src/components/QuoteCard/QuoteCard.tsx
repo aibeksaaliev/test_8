@@ -13,8 +13,8 @@ const QuoteCard: React.FC<QuoteCardProps> = ({quote, onClickHandler}) => {
 
   return (
     <Card className="mb-2">
-      <Card.Header className="d-flex justify-content-between bg-dark">
-        <Card.Title className="text-white">{quote.author}</Card.Title>
+      <Card.Header className="d-flex justify-content-between bg-dark align-items-center">
+        <Card.Title className="text-white m-0">{quote.author}</Card.Title>
         <div>
           <Link
             to={"/quotes/" + quote.id + "/edit"}
