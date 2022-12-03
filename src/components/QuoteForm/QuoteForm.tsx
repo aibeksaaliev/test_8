@@ -4,6 +4,7 @@ import {Button} from "react-bootstrap";
 import {QuoteType} from "../../types";
 import axiosApi from "../../axiosApi";
 import LoadSpinner from "../LoadSpinner/LoadSpinner";
+import ReactTooltip from "react-tooltip";
 
 interface QuoteFormProps {
   id?: string;
@@ -115,9 +116,18 @@ const QuoteForm: React.FC<QuoteFormProps> = ({id}) => {
         variant="dark"
         className="rounded-circle fs-2"
         style={{padding: "13px 20px"}}
+        data-tip data-for="save"
       >
         <i className="bi bi-cloud-download"></i>
       </Button>
+      <ReactTooltip
+        id="save"
+        place="top"
+        effect="solid"
+        type="dark"
+      >
+        Save quote
+      </ReactTooltip>
     </Form>
   );
 

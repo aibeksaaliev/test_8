@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {QuoteType} from "../../types";
 import {Link} from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 interface QuoteCardProps {
   quote: QuoteType;
@@ -20,17 +21,35 @@ const QuoteCard: React.FC<QuoteCardProps> = ({quote, onClickHandler}) => {
             to={"/quotes/" + quote.id + "/edit"}
             className="btn btn-dark rounded-circle border-white"
             style={{padding: "6px 10px"}}
+            data-tip data-for="edit"
           >
             <i className="bi bi-pencil-square"></i>
           </Link>
+          <ReactTooltip
+            id="edit"
+            place="left"
+            effect="solid"
+            type="light"
+          >
+            Edit quote
+          </ReactTooltip>
           <Button
             variant="dark"
             className="rounded-circle ms-3 border-white"
             style={{padding: "6px 10px"}}
             onClick={onClickHandler}
+            data-tip data-for="delete"
           >
             <i className="bi bi-trash3"></i>
           </Button>
+          <ReactTooltip
+            id="delete"
+            place="left"
+            effect="solid"
+            type="light"
+          >
+            Delete quote
+          </ReactTooltip>
         </div>
       </Card.Header>
       <Card.Body>
